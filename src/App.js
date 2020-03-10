@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Routing from "./components/Routing";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routing />
     </div>
   );
 }
 
 export default App;
+
+// questions for teacher:
+/* - how to use lodash to group and sum arrays
+   - from architectural standpoint is it ok if I make an api call on every page or
+     should there only be done once in app.js file
+   - is it possible to show times in shcedule (probably not because there is only one time value in training object) */
