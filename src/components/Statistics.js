@@ -20,12 +20,12 @@ const Statistics = props => {
 
         // group activites based on type of activity
         const groupArray = _.groupBy(arrayOfActivities, "activity");
-        console.log("m", groupArray);
+        //console.log("m", groupArray);
         // make an array of objects
         const arrayOfObjects = Object.keys(groupArray).map(
           key => groupArray[key]
         );
-        console.log("x", arrayOfObjects);
+        //console.log("x", arrayOfObjects);
 
         const durations = [];
         const activities = [];
@@ -41,8 +41,8 @@ const Statistics = props => {
           sum = 0;
         }
 
-        console.log("durations", durations);
-        console.log("activities", activities);
+        //console.log("durations", durations);
+        //console.log("activities", activities);
 
         setChartData({
           labels: activities,

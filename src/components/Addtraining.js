@@ -12,11 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MomentUtils from "@date-io/moment";
 import moment from "moment";
-import {
-  DatePicker,
-  DateTimePicker,
-  MuiPickersUtilsProvider
-} from "@material-ui/pickers";
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
