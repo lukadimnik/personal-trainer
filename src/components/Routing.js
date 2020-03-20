@@ -22,6 +22,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import FitnessIcon from "@material-ui/icons/FitnessCenter";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -147,11 +148,13 @@ const Routing = () => {
         </Toolbar>
       </AppBar>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/customerlist/" component={Customerlist} />
-        <Route path="/traininglist/" component={Traininglist} />
-        <Route path="/calendar/" component={TrainingCalendar} />
-        <Route path="/statistics/" component={Statistics} />
+        <Container>
+          <Route path="/" exact component={Home} />
+          <Route path="/customerlist/" component={Customerlist} />
+          <Route path="/traininglist/" component={Traininglist} />
+          <Route path="/calendar/" component={TrainingCalendar} />
+          <Route path="/statistics/" component={Statistics} />
+        </Container>
       </Switch>
       <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
         {sideList("left")}

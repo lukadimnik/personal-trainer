@@ -8,22 +8,13 @@ import { useState, useEffect } from "react";
 const localizer = momentLocalizer(moment);
 
 const TrainingCalendar = props => {
-  const [events, setEvents] = useState([
-    // {
-    //   start: new Date(),
-    //   end: new Date(moment().add(1, "days")),
-    //   title: "Some title"
-    // },
-    // {
-    //   start: new Date("2020-02-23T07:51:35.918+0000"),
-    //   end: new Date("2020-02-23T07:51:35.918+0000"),
-    //   title: "Poskus"
-    // }
-  ]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log(moment().add()._d);
 
   const fetchData = () => {
     fetch(`https://customerrest.herokuapp.com/gettrainings`)
@@ -32,13 +23,13 @@ const TrainingCalendar = props => {
         return setEvents(
           data.map(event => ({
             start: new Date(event.date),
-            end: new Date(event.date),
+            end: new Date(moment(event.date).add(event.duration, "minutes")),
             title: event.activity
           }))
         );
       });
   };
-
+  console.log("events", events);
   return (
     <div>
       <Calendar
