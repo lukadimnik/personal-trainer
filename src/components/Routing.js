@@ -148,13 +148,11 @@ const Routing = () => {
         </Toolbar>
       </AppBar>
       <Switch>
-        <Container>
-          <Route path="/" exact component={Home} />
-          <Route path="/customerlist/" component={Customerlist} />
-          <Route path="/traininglist/" component={Traininglist} />
-          <Route path="/calendar/" component={TrainingCalendar} />
-          <Route path="/statistics/" component={Statistics} />
-        </Container>
+        <Route path="/" exact component={Home} />
+        <Route path="/customerlist/" component={Customerlist} />
+        <Route path="/traininglist/" component={Traininglist} />
+        <Route path="/calendar/" component={TrainingCalendar} />
+        <Route path="/statistics/" component={Statistics} />
       </Switch>
       <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
         {sideList("left")}

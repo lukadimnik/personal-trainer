@@ -78,7 +78,7 @@ const Traininglist = () => {
           deletionLink={`https://customerrest.herokuapp.com/api/trainings/${row.original.id}`}
           deleteCustomer={deleteTraining}
           title="Delete"
-          description="Are you sure you want to delete this training?"
+          description={`Are you sure you want to delete ${row.original.activity}?`}
         />
       )
     }

@@ -92,8 +92,8 @@ const Customerlist = () => {
           deletionLink={row.original.links[1].href}
           deleteCustomer={deleteCustomer}
           title="Delete"
-          description="Are you sure you want to delete this customer?"
-        ></Dialogbox>
+          description={`Are you sure you want to delete ${row.original.firstname} ${row.original.lastname}?`}
+        />
       )
     }
   ];
