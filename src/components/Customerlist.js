@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import Button from "@material-ui/core/Button";
 import Addcustomer from "./Addcustomer";
 import Editcustomer from "./Editcustomer";
+import Dialogbox from "./Dialogbox";
 
 const Customerlist = () => {
   const [customers, setCustomers] = useState([]);
@@ -17,11 +17,9 @@ const Customerlist = () => {
   };
 
   const deleteCustomer = link => {
-    if (window.confirm("Are you sure?")) {
-      fetch(link, { method: "DELETE" })
-        .then(response => fetchData())
-        .catch(err => console.error(err));
-    }
+    fetch(link, { method: "DELETE" })
+      .then(response => fetchData())
+      .catch(err => console.error(err));
   };
 
   const saveCustomer = customer => {
@@ -90,14 +88,12 @@ const Customerlist = () => {
       filterable: false,
       width: 100,
       Cell: row => (
-        <Button
-          color="secondary"
-          size="small"
-          variant="contained"
-          onClick={() => deleteCustomer(row.original.links[1].href)}
-        >
-          Delete
-        </Button>
+        <Dialogbox
+          deletionLink={row.original.links[1].href}
+          deleteCustomer={deleteCustomer}
+          title="Delete"
+          description="Are you sure you want to delete this customer?"
+        ></Dialogbox>
       )
     }
   ];
@@ -117,3 +113,20 @@ const Customerlist = () => {
 };
 
 export default Customerlist;
+
+// ,
+//     {
+//       sortable: false,
+//       filterable: false,
+//       width: 100,
+//       Cell: row => (
+//         <Button
+//           color="secondary"
+//           size="small"
+//           variant="contained"
+//           onClick={() => deleteCustomer(row.original.links[1].href)}
+//         >
+//           Delete
+//         </Button>
+//       )
+//     }

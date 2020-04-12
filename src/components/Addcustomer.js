@@ -42,7 +42,7 @@ const Addcustomer = props => {
     <div>
       <Button
         style={{ margin: 10 }}
-        variant="outlined"
+        variant="contained"
         color="primary"
         onClick={handleClickOpen}
       >

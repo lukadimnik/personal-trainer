@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import Button from "@material-ui/core/Button";
 import Addtraining from "./Addtraining";
 import moment from "moment";
+import Dialogbox from "./Dialogbox";
 
 const Traininglist = () => {
   const [trainings, setTrainings] = useState([]);
@@ -29,11 +29,9 @@ const Traininglist = () => {
   };
 
   const deleteTraining = link => {
-    if (window.confirm("Are you sure?")) {
-      fetch(link, { method: "DELETE" })
-        .then(response => fetchData())
-        .catch(err => console.error(err));
-    }
+    fetch(link, { method: "DELETE" })
+      .then(response => fetchData())
+      .catch(err => console.error(err));
   };
 
   const saveTraining = training => {
@@ -76,18 +74,12 @@ const Traininglist = () => {
       filterable: false,
       width: 100,
       Cell: row => (
-        <Button
-          color="secondary"
-          size="small"
-          variant="contained"
-          onClick={() => {
-            return deleteTraining(
-              `https://customerrest.herokuapp.com/api/trainings/${row.original.id}`
-            );
-          }}
-        >
-          Delete
-        </Button>
+        <Dialogbox
+          deletionLink={`https://customerrest.herokuapp.com/api/trainings/${row.original.id}`}
+          deleteCustomer={deleteTraining}
+          title="Delete"
+          description="Are you sure you want to delete this training?"
+        />
       )
     }
   ];
@@ -107,3 +99,24 @@ const Traininglist = () => {
 };
 
 export default Traininglist;
+
+// ,
+//     {
+//       sortable: false,
+//       filterable: false,
+//       width: 100,
+//       Cell: row => (
+//         <Button
+//           color="secondary"
+//           size="small"
+//           variant="contained"
+//           onClick={() => {
+//             return deleteTraining(
+//               `https://customerrest.herokuapp.com/api/trainings/${row.original.id}`
+//             );
+//           }}
+//         >
+//           Delete
+//         </Button>
+//       )
+//     }
