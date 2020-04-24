@@ -22,24 +22,23 @@ import GroupIcon from "@material-ui/icons/Group";
 import FitnessIcon from "@material-ui/icons/FitnessCenter";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
-import { Container } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   list: {
-    width: 250
+    width: 250,
   },
   fullList: {
-    width: "auto"
-  }
+    width: "auto",
+  },
 }));
 
 const Routing = () => {
@@ -48,10 +47,10 @@ const Routing = () => {
     top: false,
     left: false,
     bottom: false,
-    right: false
+    right: false,
   });
 
-  const toggleDrawer = (side, open) => event => {
+  const toggleDrawer = (side, open) => (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
@@ -62,7 +61,7 @@ const Routing = () => {
     setState({ ...state, [side]: open });
   };
 
-  const sideList = side => (
+  const sideList = (side) => (
     <div
       className={classes.list}
       role="presentation"
