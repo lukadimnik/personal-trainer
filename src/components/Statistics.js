@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import _ from "lodash";
 
-const Statistics = props => {
+const Statistics = (props) => {
   const [chartData, setChartData] = useState({});
 
   useEffect(() => {
@@ -11,11 +11,11 @@ const Statistics = props => {
 
   const fetchData = () => {
     fetch(`https://customerrest.herokuapp.com/gettrainings`)
-      .then(response => response.json())
-      .then(data => {
-        const arrayOfActivities = data.map(training => ({
+      .then((response) => response.json())
+      .then((data) => {
+        const arrayOfActivities = data.map((training) => ({
           activity: training.activity,
-          duration: training.duration
+          duration: training.duration,
         }));
 
         // group activites based on type of activity
@@ -23,7 +23,7 @@ const Statistics = props => {
         //console.log("m", groupArray);
         // make an array of objects
         const arrayOfObjects = Object.keys(groupArray).map(
-          key => groupArray[key]
+          (key) => groupArray[key]
         );
         //console.log("x", arrayOfObjects);
 
@@ -44,6 +44,9 @@ const Statistics = props => {
         //console.log("durations", durations);
         //console.log("activities", activities);
 
+        console.log("activities", activities);
+        console.log("durations", durations);
+
         setChartData({
           labels: activities,
           datasets: [
@@ -56,20 +59,20 @@ const Statistics = props => {
                 "rgb(194, 214, 214)",
                 "rgb(255, 255, 179)",
                 "rgb(255, 194, 179)",
-                "rgb(230, 179, 255)",
                 "rgb(179, 236, 255)",
-                "rgb(194, 214, 214)",
-                "rgb(255, 255, 179)",
-                "rgb(255, 194, 179)",
                 "rgb(230, 179, 255)",
-                "rgb(179, 236, 255)"
+                "rgb(179, 236, 100)",
+                "rgb(100, 100, 100)",
+                "rgb(150, 236, 150)",
+                "rgb(179, 140, 100)",
+                "rgb(130, 140, 100)",
               ],
               borderWidth: 1,
               borderColor: "#777",
               hoverBorderWidth: 3,
-              hoverBorderColor: "black"
-            }
-          ]
+              hoverBorderColor: "black",
+            },
+          ],
         });
       });
   };
@@ -132,7 +135,7 @@ const Statistics = props => {
   //     ]
   //   });
   // };
-
+  console.log("chart data", chartData);
   return (
     <div>
       <h1>Statistics</h1>
@@ -146,21 +149,46 @@ const Statistics = props => {
             title: {
               display: true,
               text: "Minutes in total per activity",
-              fontSize: 25
+              fontSize: 25,
             },
             legend: {
               display: false,
-              position: "right"
+              position: "right",
             },
             scales: {
               xAxes: [
                 {
                   ticks: {
-                    fontSize: 20
-                  }
-                }
-              ]
-            }
+                    fontSize: 20,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+        <Pie
+          data={chartData}
+          width={100}
+          height={50}
+          options={{
+            title: {
+              display: true,
+              text: "Minutes in total per activity",
+              fontSize: 25,
+            },
+            legend: {
+              display: false,
+              position: "right",
+            },
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    fontSize: 20,
+                  },
+                },
+              ],
+            },
           }}
         />
       </div>
